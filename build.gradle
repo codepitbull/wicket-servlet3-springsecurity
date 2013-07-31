@@ -1,0 +1,34 @@
+description = 'Wicket 6 and Spring Security 3 example'
+
+apply plugin: 'war'
+apply plugin: 'maven'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    mavenRepo url: "http://repo.springsource.org/milestone"
+}
+
+def wicket_version = "6.9.1"
+def spring_version = "3.2.3.RELEASE"
+def spring_security_version = "3.2.0.M2"
+def slf4j_version = "1.7.2"
+def log4j_version = "1.2.17"
+def junit_version = "4.11"
+
+dependencies {
+    compile "org.apache.wicket:wicket-core:${wicket_version}"
+    compile "org.apache.wicket:wicket-spring:${wicket_version}"
+    compile "org.apache.wicket:wicket-auth-roles:${wicket_version}"
+    compile "org.springframework:spring-web:${spring_version}"
+    compile "org.springframework:spring-context:${spring_version}"
+    compile "org.springframework.security:spring-security-web:${spring_security_version}"
+    compile "org.springframework.security:spring-security-config:${spring_security_version}"
+    compile "org.slf4j:slf4j-log4j12:${slf4j_version}"
+    compile "log4j:log4j:${log4j_version}"
+
+    testCompile "junit:junit:${junit_version}"
+    testCompile "org.springframework:spring-test:${spring_version}"
+
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+}
